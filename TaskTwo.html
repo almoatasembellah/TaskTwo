@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript - Add HTML Table Row </title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            
+            var table = document.getElementsByTagName('table')[0];
+                
+            
+            function addRow()
+            {
+                
+                var fname = document.getElementById('fname').value;
+                var lname = document.getElementById('lname').value;
+                var age = document.getElementById('age').value;
+                var remove = document.getElementById('remove');
+                  
+                
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                
+                  var newRow = table.insertRow(table.rows.length);
+                  
+                
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  var cel4 = newRow.insertCell(3);
+                
+                
+                  cel1.innerHTML = fname;
+                  cel2.innerHTML = lname;
+                  cel3.innerHTML = age;
+                  cel4.innerHTML = "remove";
+                
+                for(var i = 1; i < table.rows.length; i++){
+                table.rows[i].cells[3].onclick = function()
+                {
+                    var c = confirm("do you want to delete this row");
+                    if(c === true)
+                    {
+                        index = this.parentElement.rowIndex;
+                        table.deleteRow(index);
+                    }
+                    
+                };
+                }
+            
+            }
+            
+            
+        </script>
+        
+    </head>
+
+    <body>
+        <div>
+        First Name: <input type="text" name="fname" id="fname" /><br/><br/>
+        Last Name: <input type="text" name="lname" id="lname" /><br/><br/>
+        Age: <input type="text" name="age" id="age" /><br/><br/>
+        <!--Remove: <input type="text" name="remove" id="remove" /><br/><br/>-->
+        <button onclick="addRow();">Add Row</button><br/><br/>
+        </div>
+        <table border="1">
+            
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Remove</th>
+            </tr>
+            
+        </table>
+
+    </body>
+
+</html>
